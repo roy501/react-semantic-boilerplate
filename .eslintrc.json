@@ -5,14 +5,24 @@
     "commonjs": true
   },
   "ecmaFeatures": {
-    "jsx" : true,
+    "jsx": true,
     "modules": true
+  },
+  "globals": {
+    "jQuery": true,
+    "$": true
   },
   "extends": "eslint:recommended",
   "rules": {
     "no-console": 0,
     "dot-notation": 2,
-    "eqeqeq": [2, "smart"],
-    "array-bracket-spacing": [2, "never"]
+    "eqeqeq": [
+      2,
+      "smart"
+    ],
+    "array-bracket-spacing": [
+      2,
+      "never"
+    ]
   }
 }
