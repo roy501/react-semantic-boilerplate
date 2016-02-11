@@ -1,11 +1,24 @@
-"use strict";
-console.log("ted");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise';
 
-const f = () => <div>Hello</div>
+import App from './components/app';
+import reducers from './reducers';
 
-export default f;
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-var g={
-	"sdf":"dsf",
-	"dsf":true
-}
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.getElementById('app'));
+
+
+/***************************************
+ * Semantic-ui initializing components *
+ ***************************************/
+$('.ui.dropdown')
+  .dropdown()
+;

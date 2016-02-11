@@ -77,7 +77,10 @@ gulp.task('js', function() {
 	browserify(config.paths.indexJs)
 		.transform(babelify)
 		.bundle()
-		.on('error', notify)
+		.on('error', function(error) {
+			notify(error);
+			console.log(error);
+		})
 		.pipe(source('bundle.js'))
 		.pipe(gulp.dest(config.paths.dist + '/scripts'))
 		.pipe(connect.reload());
@@ -92,8 +95,8 @@ gulp.task('css', function() {
 gulp.task('eslint', function(){
 	return gulp.src(config.paths.js)
 		.pipe(eslint())
-		.pipe(eslint.format())
-		.pipe(eslint.failAfterError());
+		.pipe(eslint.format());
+		//.pipe(eslint.failAfterError());
 });
 
 gulp.task('watch', function() {
